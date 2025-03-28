@@ -139,7 +139,7 @@ return "";
 class Program{
     static void Main(){
 
-Parser.getJoke();
+Console.WriteLine(Parser.getJoke());
 
     }
 }

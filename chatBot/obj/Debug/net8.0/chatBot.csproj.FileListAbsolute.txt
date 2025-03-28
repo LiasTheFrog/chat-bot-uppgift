@@ -12,3 +12,4 @@ C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\
 C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.pdb
 C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.genruntimeconfig.cache
 C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\ref\chatBot.dll
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.sourcelink.json
