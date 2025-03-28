@@ -138,9 +138,9 @@ return "";
 
 
 class Program{
-    static void Main(){
+    static async Task Main(){
 
-Parser.getJoke();
+await Parser.getJoke();
 
     }
 }
