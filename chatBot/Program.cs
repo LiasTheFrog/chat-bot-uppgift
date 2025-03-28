@@ -92,11 +92,11 @@ JsonSerializerOptions options = new JsonSerializerOptions{WriteIndented = true};
 
 using(HttpClient kalle = new HttpClient()){
 
- kalle.BaseAddress = new Uri ("https://api.chucknorris.io");
+ kalle.BaseAddress = new Uri ("https://api.chucknorris.io/jokes/random");
 
  
 try{
-    HttpResponseMessage response =  await kalle.GetAsync("jokes/random");
+    HttpResponseMessage response =  await kalle.GetAsync("application/json");
     Console.WriteLine("#");
     response.EnsureSuccessStatusCode();
 
