@@ -97,6 +97,7 @@ using(HttpClient kalle = new HttpClient()){
  
 try{
     HttpResponseMessage response =  await kalle.GetAsync("jokes/random");
+    Console.WriteLine("#");
     response.EnsureSuccessStatusCode();
 
     string responseBody = await response.Content.ReadAsStringAsync();
