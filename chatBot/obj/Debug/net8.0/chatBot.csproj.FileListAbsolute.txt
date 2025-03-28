@@ -1,0 +1,14 @@
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.AssemblyInfoInputs.cache
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.AssemblyInfo.cs
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.csproj.CoreCompileInputs.cache
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\bin\Debug\net8.0\chatBot.exe
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\bin\Debug\net8.0\chatBot.deps.json
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\bin\Debug\net8.0\chatBot.runtimeconfig.json
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\bin\Debug\net8.0\chatBot.dll
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\bin\Debug\net8.0\chatBot.pdb
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.dll
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\refint\chatBot.dll
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.pdb
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\chatBot.genruntimeconfig.cache
+C:\Users\li5236\OneDrive - LYSTKOM\C#\chat bot uppgift\chatBot\obj\Debug\net8.0\ref\chatBot.dll

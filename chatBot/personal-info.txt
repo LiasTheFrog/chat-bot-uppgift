@@ -1,0 +1,6 @@
+pelle
+TestOauth
+
+
+
+https://dev.twitch.tv/docs/chat/irc/ 
