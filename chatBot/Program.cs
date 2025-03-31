@@ -102,7 +102,7 @@ try{
 
     string responseBody = await response.Content.ReadAsStringAsync();
     string JsonString = JsonSerializer.Serialize(responseBody,options);
-    Console.WriteLine(JsonString);
+    /* Console.WriteLine(JsonString); */
     return JsonString;
 }
 catch(HttpRequestException e){
