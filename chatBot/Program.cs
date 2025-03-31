@@ -141,7 +141,7 @@ return "";
 class Program{
     static async Task Main(){
 
-await Parser.getJoke();
+await Parser.HandleMsg("pelle", "!joke");
 
     }
 }
