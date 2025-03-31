@@ -59,7 +59,7 @@ async Task Write(string msg){
     
 }
 
-async Task<string> Read(){
+public async Task<string> Read(){
     byte[] sentback =  new byte[1024];
 var receivedAsync = await pelle.ReceiveAsync(new ArraySegment<byte>(sentback), default);
 string recieved = Encoding.UTF8.GetString(sentback,0,receivedAsync.Count);
@@ -67,7 +67,7 @@ Console.WriteLine(recieved);
 return recieved;
 }
 
-async Task HandleKommand(string kommand){
+public async Task HandleKommand(string kommand){
 
     string kommand1 = "!username";
     string kommand2 = "!joke";
@@ -102,8 +102,12 @@ try{
 
     string responseBody = await response.Content.ReadAsStringAsync();
     string JsonString = JsonSerializer.Serialize(responseBody,options);
+
     /* Console.WriteLine(JsonString); */
-    return JsonString;
+    string[] splitjoke = JsonString.Split("value");
+string substringjoke = splitjoke[1].Substring(13,splitjoke[1].Length - 21);
+
+    return substringjoke;
 }
 catch(HttpRequestException e){
     Console.WriteLine(e.Message);
@@ -123,17 +127,9 @@ using(StreamWriter LogText = new StreamWriter("log.txt")){
 
 }
 
-public static async Task<string> HandleMsg(string user,string msg){
-if(msg[0] == '!'){
-string joke = await getJoke();
-string[] splitjoke = joke.Split("value");
-string substringjoke = splitjoke[1].Substring(13,splitjoke[1].Length - 21);
-Console.WriteLine(substringjoke);
-return"";
-}else{
+public static bool HandleMsg(string msg){
+return msg[0] == '!';
 
-return "";
-}
 }
 
 }
@@ -141,8 +137,22 @@ return "";
 
 class Program{
     static async Task Main(){
+bool running = true;
+Bot twitch = new Bot();
 
-await Parser.HandleMsg("pelle", "!joke");
+while(running){
+
+/* string msg = await twitch.Read(); */
+string msg = "!joke";
+if(Parser.HandleMsg(msg)){
+await twitch.HandleKommand(msg);
+running = false;
+}
+
+
+}
+
+
 
     }
 }
