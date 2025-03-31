@@ -106,8 +106,9 @@ try{
     /* Console.WriteLine(JsonString); */
     string[] splitjoke = JsonString.Split("value");
 string substringjoke = splitjoke[1].Substring(13,splitjoke[1].Length - 21);
-
-    return substringjoke;
+byte[] byteMSG = Encoding.UTF8.GetBytes(substringjoke);
+string stringMSG = Encoding.UTF8.GetString(byteMSG);
+    return stringMSG;
 }
 catch(HttpRequestException e){
     Console.WriteLine(e.Message);
