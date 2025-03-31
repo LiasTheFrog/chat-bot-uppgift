@@ -126,7 +126,7 @@ using(StreamWriter LogText = new StreamWriter("log.txt")){
 public static async Task<string> HandleMsg(string user,string msg){
 if(msg[0] == '!'){
 string joke = await getJoke();
-string[] splitjoke = joke.Split("\u0022");
+string[] splitjoke = joke.Split('\u0022');
 Console.WriteLine(splitjoke[splitjoke.Length - 2]);
 return"";
 }else{
