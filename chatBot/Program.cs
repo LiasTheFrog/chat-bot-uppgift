@@ -75,7 +75,7 @@ public async Task HandleKommand(string kommand){
 Console.WriteLine("username: pellekanin");
     }
     else if(kommand == kommand2){
-    Console.WriteLine(Parser.getJoke());
+    Console.WriteLine(await Parser.getJoke());
     }else{
         Console.WriteLine("kommand doesn't exist");
     }
