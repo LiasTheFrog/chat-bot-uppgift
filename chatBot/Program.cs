@@ -128,7 +128,7 @@ if(msg[0] == '!'){
 string joke = await getJoke();
 string[] splitjoke = joke.Split("value");
 string substringjoke = splitjoke[1].Substring(3,splitjoke[1].Length - 6);
-Console.WriteLine(splitjoke[1]);
+Console.WriteLine(substringjoke);
 return"";
 }else{
 
