@@ -168,7 +168,7 @@ while(running){
 /* string msg = await twitch.Read(); */
 string msg = "!joke 123";
 if(Parser.HandleMsg(msg)){
-    Console.WriteLine(Parser.removeFromPrefix('!', msg));
+    Console.WriteLine(Parser.getCommand('!', msg));
     running = false;
 }
 
