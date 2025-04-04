@@ -69,11 +69,11 @@ return recieved;
 
 public async Task HandleKommand(string kommand, string[] args){
 
-    string kommand1 = "!rev";
-    string kommand2 = "!joke";
+    string kommand1 = "rev";
+    string kommand2 = "joke";
     if(kommand == kommand1){
 
-
+Console.WriteLine(args[0]);
 
     }
     else if(kommand == kommand2){
@@ -99,7 +99,6 @@ public static string getCommand(char prefix,string input){
     string command = removeFromPrefix(prefix,input);
     string[] removeChar = input.Split(' ');
     string removed = removeFromPrefix('!', removeChar[0]);
-        Console.WriteLine($" {removed} ");
 
     return removed;
 }
@@ -168,7 +167,7 @@ while(running){
 /* string msg = await twitch.Read(); */
 string msg = "!joke 123";
 if(Parser.HandleMsg(msg)){
-    Console.WriteLine(Parser.getCommand('!', msg));
+    await twitch.HandleKommand(Parser.getCommand('!', msg), Parser.getArgs(msg));
     running = false;
 }
 
