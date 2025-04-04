@@ -73,7 +73,12 @@ public async Task HandleKommand(string kommand, string[] args){
     string kommand2 = "joke";
     if(kommand == kommand1){
 
-Console.WriteLine(args[0]);
+char[] cArray = args[0].ToCharArray();
+
+
+for(int i = cArray.Count() - 1; i >= 0; i--){
+    Console.Write(cArray[i]);
+}
 
     }
     else if(kommand == kommand2){
