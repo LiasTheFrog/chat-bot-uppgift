@@ -67,12 +67,14 @@ Console.WriteLine(recieved);
 return recieved;
 }
 
-public async Task HandleKommand(string kommand){
+public async Task HandleKommand(string kommand, string[] args){
 
-    string kommand1 = "!username";
+    string kommand1 = "!rev";
     string kommand2 = "!joke";
     if(kommand == kommand1){
-Console.WriteLine("username: pellekanin");
+
+
+
     }
     else if(kommand == kommand2){
     Console.WriteLine(await Parser.getJoke());
@@ -86,6 +88,26 @@ Console.WriteLine("username: pellekanin");
 }
 
 class Parser{
+
+public static string removeFromPrefix(char prefix,string input){
+    string[] removeChar = input.Split(prefix);
+     
+return removeChar[1];
+}
+
+public static string getCommand(char prefix,string input){
+    string command = removeFromPrefix(prefix,input);
+    string[] removeChar = input.Split(' ');
+    string removed = removeFromPrefix('!', removeChar[0]);
+        Console.WriteLine($" {removed} ");
+
+    return removed;
+}
+
+    public static string[] getArgs(string input){
+    string[] removeChar = input.Split(' ');
+    return removeChar[1..];
+}
 
 public static async Task<string> getJoke(){
 JsonSerializerOptions options = new JsonSerializerOptions{WriteIndented = true};
@@ -146,9 +168,9 @@ while(running){
 /* string msg = await twitch.Read(); */
 string msg = "!joke";
 if(Parser.HandleMsg(msg)){
-await twitch.HandleKommand(msg);
-running = false;
+    Console.WriteLine(Parser.removeFromPrefix('!', msg));
 }
+
 
 
 }
