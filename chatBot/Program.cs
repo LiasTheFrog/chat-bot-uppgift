@@ -166,9 +166,10 @@ Bot twitch = new Bot();
 while(running){
 
 /* string msg = await twitch.Read(); */
-string msg = "!joke";
+string msg = "!joke 123";
 if(Parser.HandleMsg(msg)){
     Console.WriteLine(Parser.removeFromPrefix('!', msg));
+    running = false;
 }
 
 
