@@ -46,7 +46,9 @@ async Task verify(string IdInfo1, string IdInfo2){
     ArraySegment<byte> oauth = new(oauthBytes);
 
 await pelle.SendAsync(username,WebSocketMessageType.Text, true, CancellationToken.None);
+Read();
 await pelle.SendAsync(oauth,WebSocketMessageType.Text, true, CancellationToken.None);
+Read();
 Console.WriteLine("verification sent");
 }
 
@@ -65,6 +67,7 @@ public async Task<string> Read(){
 var receivedAsync = await pelle.ReceiveAsync(new ArraySegment<byte>(sentback), default);
 string recieved = Encoding.UTF8.GetString(sentback,0,receivedAsync.Count);
 Console.WriteLine(recieved);
+Parser.Log("Echo",recieved);
 return recieved;
 }
 
@@ -72,6 +75,7 @@ public async Task<string> HandleKommand(string kommand, string[] args){
 
     string kommand1 = "rev";
     string kommand2 = "joke";
+    Console.WriteLine($"kommando är: {kommand}");
     if(kommand == kommand1){
 
 char[] cArray = args[0].ToCharArray();
@@ -87,7 +91,8 @@ return s;
     else if(kommand == kommand2){
     Console.WriteLine();
     return await Parser.getJoke();
-    }else{
+    }
+    else{
         
         return "kommand doesn't exist";
     }
@@ -101,16 +106,14 @@ class Parser{
 
 public static string removeFromPrefix(char prefix,string input){
     string[] removeChar = input.Split(prefix);
-     
+     Console.WriteLine(removeChar[1]);
 return removeChar[1];
 }
 
 public static string getCommand(char prefix,string input){
     string command = removeFromPrefix(prefix,input);
-    string[] removeChar = input.Split(' ');
-    string removed = removeFromPrefix('!', removeChar[0]);
-
-    return removed;
+    string[] removeChar = command.Split(' ');
+    return removeChar[0];
 }
 
     public static string[] getArgs(string input){
@@ -153,10 +156,10 @@ catch(HttpRequestException e){
 public static string Log(string user, string msg){
 
 using(StreamWriter LogText = new StreamWriter("log.txt")){
-    LogText.WriteLine(msg);
-    return msg;
+    LogText.WriteLine($"[{DateTime.Now}], {user}: {msg}");
+    
 }
-
+return msg;
 }
 
 public static bool HandleMsg(string msg){
@@ -179,11 +182,14 @@ while(running){
 Console.WriteLine("skriv meddelande: ");
 string input = Console.ReadLine();
 
-string msg = await twitch.Write(input);
 
-if(Parser.HandleMsg(msg)){
-    Console.WriteLine(await twitch.HandleKommand(Parser.getCommand('!', msg), Parser.getArgs(msg)));
+
+if(Parser.HandleMsg(input)){
+    Console.WriteLine(await twitch.HandleKommand(Parser.getCommand('!', input), Parser.getArgs(input)));
     running = false;
+}else{
+   
+string msg = await twitch.Write(input);
 }
 
 
