@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Threading.Tasks.Dataflow;
 
 class Bot{
-Uri wss = new Uri("wss://irc-ws.chat.twitch.tv:443");
+Uri wss = new Uri("wss://echo.websocket.in");
 ClientWebSocket pelle = new ClientWebSocket();
 
 public async Task Connect(){
