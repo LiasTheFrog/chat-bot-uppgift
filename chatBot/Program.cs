@@ -14,12 +14,12 @@ class Bot{
 Uri wss = new Uri("wss://irc-ws.chat.twitch.tv:443");
 ClientWebSocket pelle = new ClientWebSocket();
 
-async Task Connect(){
+public async Task Connect(){
 await pelle.ConnectAsync(wss,default);
 Console.WriteLine("connected");
 }
 
-async Task<bool> ConfirmID(){
+public async Task<bool> ConfirmID(){
 string[] ID = PersonalInfo();
 await verify(ID[0],ID[1]);
 string respons = await Read();
@@ -50,12 +50,13 @@ await pelle.SendAsync(oauth,WebSocketMessageType.Text, true, CancellationToken.N
 Console.WriteLine("verification sent");
 }
 
-async Task Write(string msg){
+public async Task<string> Write(string msg){
+    Parser.Log("pelle", msg);
     byte[] msgBytes = Encoding.UTF8.GetBytes(msg);
     ArraySegment<byte> message = new(msgBytes);
     await pelle.SendAsync(message, WebSocketMessageType.Text, true, CancellationToken.None);
     Console.WriteLine("message sent");
-    await Read();
+    return await Read();
     
 }
 
@@ -67,24 +68,28 @@ Console.WriteLine(recieved);
 return recieved;
 }
 
-public async Task HandleKommand(string kommand, string[] args){
+public async Task<string> HandleKommand(string kommand, string[] args){
 
     string kommand1 = "rev";
     string kommand2 = "joke";
     if(kommand == kommand1){
 
 char[] cArray = args[0].ToCharArray();
-
+string s = "";
 
 for(int i = cArray.Count() - 1; i >= 0; i--){
-    Console.Write(cArray[i]);
+    s += cArray[i];
+    
 }
+return s;
 
     }
     else if(kommand == kommand2){
-    Console.WriteLine(await Parser.getJoke());
+    Console.WriteLine();
+    return await Parser.getJoke();
     }else{
-        Console.WriteLine("kommand doesn't exist");
+        
+        return "kommand doesn't exist";
     }
 }
 
@@ -166,13 +171,18 @@ class Program{
     static async Task Main(){
 bool running = true;
 Bot twitch = new Bot();
+await twitch.Connect();
+await twitch.ConfirmID();
 
 while(running){
 
-/* string msg = await twitch.Read(); */
-string msg = "!rev 123";
+Console.WriteLine("skriv meddelande: ");
+string input = Console.ReadLine();
+
+string msg = await twitch.Write(input);
+
 if(Parser.HandleMsg(msg)){
-    await twitch.HandleKommand(Parser.getCommand('!', msg), Parser.getArgs(msg));
+    Console.WriteLine(await twitch.HandleKommand(Parser.getCommand('!', msg), Parser.getArgs(msg)));
     running = false;
 }
 
